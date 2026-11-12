@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # Stage 1: install the gems, compiling Puma's C extension.
-FROM ruby:4.0.7-alpine3.24@sha256:1ca7cb33e970630d571e0da6140e0bc925faec8f1f8f51f9f2cdf5e5f5eed7c9 AS build
+FROM ruby:4.0.8-alpine3.24@sha256:e10c6cbfa9c0adf740c3c1d4d142d5b833b7901536f9968ce5925a6f3f6d0c14 AS build
 RUN apk add --no-cache build-base
 WORKDIR /app
 ENV BUNDLE_DEPLOYMENT=1 \
@@ -19,7 +19,7 @@ COPY web ./web
 
 # Stage 2: Ruby, the installed gems and the app, run as a non-root user.
 # Nothing is written at runtime, so the root filesystem can be read-only.
-FROM ruby:4.0.7-alpine3.24@sha256:1ca7cb33e970630d571e0da6140e0bc925faec8f1f8f51f9f2cdf5e5f5eed7c9
+FROM ruby:4.0.8-alpine3.24@sha256:e10c6cbfa9c0adf740c3c1d4d142d5b833b7901536f9968ce5925a6f3f6d0c14
 # Ruby 4.0.7 ships json 2.18.0 as a default gem, which has CVE-2026-33210
 # (critical) and CVE-2026-54696. The app never loads it: Gemfile.lock pins
 # json 3.0.2 and the bundle provides it. The default copy is removed so the

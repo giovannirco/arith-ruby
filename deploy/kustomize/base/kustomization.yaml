@@ -15,4 +15,4 @@ resources:
 #   kubectl -n arith set image deployment/arith arith=ghcr.io/giovannirco/arith-ruby:dev
 images:
   - name: ghcr.io/giovannirco/arith-ruby
-    newTag: "1.1.0"
+    newTag: "1.1.1"
